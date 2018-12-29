@@ -27,10 +27,13 @@ class UsernameForm extends React.Component{
 
    render(){
        return <div>
+             <div>
+                <h2>What is your username?</h2>
            <form onSubmit ={this.onSubmit}>
                <input type ="text" placeholder="What is your username?"  onChange ={this.onChange}/>
                <input type ="submit" />
            </form>
+       </div>
        </div>
    }
 

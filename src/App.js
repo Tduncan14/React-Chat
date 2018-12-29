@@ -6,8 +6,20 @@ class App extends Component {
     this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
   }
   onUsernameSubmitted(username){
-
-
+    // to send a post local host 3001 to user
+     fetch('http://localhost:3001/users',{
+       method:'POST',
+       headers: {
+         'Content-Type':'application/json',
+       },
+       body: JSON.stringify({username}),
+     })
+     .then(response => {
+       console.log('success');
+     })
+     .catch(error =>{
+       console.error(error);
+     })
   }
 
   render() {
