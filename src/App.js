@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   render() {
-  return <UsernameForm onSubmit = {username =>{this.onUsernameSubmitted}} />
+  return <UsernameForm onSubmit ={this.onUsernameSubmitted} />
   
   }
 }
