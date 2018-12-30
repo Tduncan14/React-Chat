@@ -27,11 +27,7 @@ class ChatScreen extends Component {
  }
 
   render() {
-    return (
-      <div>
-        <h1>Chat</h1>
-      </div>
-    )
+    
     const styles ={
       constainer:{
         height: '100vh',
@@ -49,6 +45,14 @@ class ChatScreen extends Component {
          backgroundColor:'#2c303b',
          color:'White',
        },
+       chatListContainer:{
+         padding:20,
+         width:'85%',
+         display:'flex',
+         flexDirection:'column'
+       },
+
+
     }
   }
 }
