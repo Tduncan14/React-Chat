@@ -51,9 +51,19 @@ class ChatScreen extends Component {
          display:'flex',
          flexDirection:'column'
        },
-
-
     }
+    return (
+      <div style={styles.container}>
+       <div style = {styles.chatContainer}>
+       <aside style ={styles.chatListContainer}>
+        <h2>Who is Online</h2>
+       </aside>
+       <section style ={styles.chatListContainer}>
+       <h2>Chat</h2>
+       </section>
+       </div>
+      </div>
+    )
   }
 }
 
