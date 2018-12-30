@@ -29,7 +29,7 @@ class ChatScreen extends Component {
   render() {
     
     const styles ={
-      constainer:{
+      container:{
         height: '100vh',
         display:'flex',
         flexDirection:'column'
@@ -55,7 +55,7 @@ class ChatScreen extends Component {
     return (
       <div style={styles.container}>
        <div style = {styles.chatContainer}>
-       <aside style ={styles.chatListContainer}>
+       <aside style ={styles.whosOnlineListContainer}>
         <h2>Who is Online</h2>
        </aside>
        <section style ={styles.chatListContainer}>
