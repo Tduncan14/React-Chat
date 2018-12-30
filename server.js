@@ -1,9 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const Chatkit = require('pusher-chatkit-server');
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const Chatkit = require('@pusher/chatkit-client')
 
-const app = express();
+const app = express()
 
 // creating on local server chatkit an instance of chatkit
 
@@ -13,9 +13,9 @@ const chatkit = new Chatkit.default({
 })
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(cors())
 
 app.post('/users', (req,res) => {
   const {username} = req.body
@@ -34,8 +34,8 @@ app.post('/users', (req,res) => {
       else{
         res.status(error.statusCode).json(error)
       }
-    });
-});
+    })
+})
 app.post('/authenticate',(req,res) => {
   const authData = chatkit.authenticate({userId: req.query.user_id})
   res.status(authData.status).send(authData.body)
@@ -48,4 +48,4 @@ app.listen(PORT, err => {
   } else {
     console.log(`Running on port ${PORT}`)
   }
-});
+})

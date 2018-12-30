@@ -1,37 +1,40 @@
 import React, { Component } from 'react'
 import UsernameForm from './components/UsernameForm'
+import ChatScreen from './ChatScreen'
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
-    this.state ={
-      currentUsername:' ',
+    this.state = {
+      currentUsername: '',
+    currentScreen: 'WhatIsYourUsernameScreen'
     }
     this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
-  }
-  onUsernameSubmitted(username){
-    // to send a post local host 3001 to user
-     fetch('http://localhost:3001/users',{
-       method:'POST',
-       headers: {
-         'Content-Type': 'application/json',
-       },
-       body: JSON.stringify({username}),
-     })
-     .then(response => {
-       console.log('success');
-       this.setState({
-         currentUsername: username
-       })
-     })
-     .catch(error =>{
-       console.error('error',error);
-     })
-  }
+ }
 
-  render() {
-  return <UsernameForm onSubmit ={this.onUsernameSubmitted} />
-  
+ onUsernameSubmitted(username) {
+  fetch('http://localhost:3000/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username }),
+  })
+    .then(response => {
+      this.setState({
+        currentUsername: username,
+        currentScreen: 'ChatScreen'
+      })
+    })
+    .catch(error => console.error('error', error))
+}
+ render() {
+   if (this.state.currentScreen === 'WhatIsYourUsernameScreen') {
+      return <UsernameForm onSubmit={this.onUsernameSubmitted} />
+   }
+   if (this.state.currentScreen === 'ChatScreen') {
+     return <ChatScreen currentUsername={this.state.currentUsername} />
+   }
   }
 }
 

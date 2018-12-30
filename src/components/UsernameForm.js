@@ -1,32 +1,34 @@
 
 //import react
-import React from 'react'
+import React ,{Component} from 'react'
 
-class UsernameForm extends React.Component{
+class UsernameForm extends Component{
    constructor(props){
        super(props)
        this.state = {
-            username:''
+            username:'',
        }
        /// Binds both of the functions to the constructor and this
-     this.onChange = this.onChange.bind(this);
+     
      this.onSubmit = this.onSubmit.bind(this);
+     this.onChange = this.onChange.bind(this);
    }
-   onChange(e) {
-    this.setState({
-        username: e.target.value,
-    })
-}
+  
 
   onSubmit (e) {
       e.preventDefault()
       this.props.onSubmit(this.state.username)
   }
 
+  onChange(e) {
+    this.setState({
+        username: e.target.value,
+    })
+}
    // render function that returns things
 
    render(){
-       return <div>
+       return( <div>
              <div>
                 <h2>What is your username?</h2>
            <form onSubmit ={this.onSubmit}>
@@ -35,6 +37,7 @@ class UsernameForm extends React.Component{
            </form>
        </div>
        </div>
+       )
    }
 
 
