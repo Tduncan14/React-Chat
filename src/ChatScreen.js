@@ -26,7 +26,7 @@ class ChatScreen extends Component {
       .then(currentUser => {
        this.setState({ currentUser })
        return currentUser.subscribeToRoom({
-         roomId: "YOUR ROOM ID",
+         roomId: "19376672",
          messageLimit:100,
          hooks: {
            onMessage: message => {
@@ -76,7 +76,10 @@ class ChatScreen extends Component {
         <h2>Who is Online</h2>
        </aside>
        <section style ={styles.chatListContainer}>
-       <h2>Chat</h2>
+        <MessageList
+         messages ={this.state.messages}
+         style={styles.chatList}
+         />
        </section>
        </div>
       </div>
