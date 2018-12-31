@@ -9,10 +9,19 @@ class ChatScreen extends Component {
    this.state = {
      currentUser: {},
      currentRoom:{},
-     messages:[]
+     messages:[],
+     usersWhoAreTyping:[],
    }
     this.sendMessage = this.sendMessage.bind(this)
+    this.sendTypingEvent =this.sendTypingEvent.bind(this)
  }
+
+  sendTypingEvent(text){
+    this.state.currentUser
+      .isTypingIn({roomId: this.state.currentRoom.id})
+      .catch(error => console.error('error',error))
+  }
+
 
  sendMessage(text){
    this.state.currentUser.sendMessage({
@@ -44,6 +53,18 @@ class ChatScreen extends Component {
                 messages: [...this.state.messages, message],
              })
            },
+           onUserStartedTyping: user => {
+             this.setState({
+               usersWhoAreTyping:[...this.state.usersWhoAreTyping, user.name],
+             })
+           },
+           onUserStoppedTyping: user => {
+             this.setState({
+               usersWhoAreTyping: this.state.usersWhoAreTyping.filter(
+                 username => username !== user.name
+               ),
+             })
+           }
          },
        })
        .then(currentRoom =>{
